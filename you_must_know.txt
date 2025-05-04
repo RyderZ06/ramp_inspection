@@ -1,0 +1,1 @@
+Создайте файл .gitignore командой: cmd: "echo.>.gitignore"

@@ -31,7 +31,24 @@ jupyter notebook --generate-config
 Windows:
 text
 C:\Users\user\.jupyter\jupyter_notebook_config.py 
+#########
+ВНИМАНИЕ: если файл не появился то необходимо выполнить команду:
+1. Установите пакет jupyter
+В активированном виртуальном окружении выполните:
 
+text
+pip install jupyter
+Это установит необходимые команды, включая jupyter-notebook.
+
+2. Сгенерируйте конфиг
+После установки снова выполните:
+
+text
+jupyter notebook --generate-config
+Файл конфигурации появится по пути:
+
+Windows: %USERPROFILE%\.jupyter\jupyter_notebook_config.py
+#########
 4. Откройте файл конфигурации
 Откройте файл C:\Users\user\.jupyter\jupyter_notebook_config.py в любом текстовом редакторе (например, Блокнот или VS Code).
 

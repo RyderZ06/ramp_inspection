@@ -1,0 +1,5 @@
+Start desktop app:
+
+write in cmd `python main.py` in project directory "...\ramp_inspection\src"
+
+write in cmd 'start format_code.cmd' in project directory "...\ramp_inspection\src"

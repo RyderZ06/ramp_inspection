@@ -1,0 +1,99 @@
+Алгоритм настройки JupyterLab для показа скрытых файлов в виртуальном окружении
+1. Активируйте виртуальное окружение
+Откройте командную строку (cmd или терминал) и перейдите в папку с вашим проектом.
+
+Для активации виртуального окружения (пример для Windows):
+
+text
+путь\к\виртуальному_окружению\Scripts\activate
+Например:
+
+text
+D:\projects\myenv\Scripts\activate
+
+2. Убедитесь, что JupyterLab установлен в этом окружении
+В активированном окружении выполните:
+
+text
+pip show jupyterlab
+Если JupyterLab не установлен, установите:
+
+text
+pip install jupyterlab
+
+3. Сгенерируйте файл конфигурации Jupyter (если он ещё не создан)
+В активированном окружении выполните команду:
+
+text
+jupyter notebook --generate-config
+Это создаст файл конфигурации jupyter_notebook_config.py в папке:
+
+Windows:
+text
+C:\Users\user\.jupyter\jupyter_notebook_config.py 
+#########
+ВНИМАНИЕ: если файл не появился то необходимо выполнить команду:
+1. Установите пакет jupyter
+В активированном виртуальном окружении выполните:
+
+text
+pip install jupyter
+Это установит необходимые команды, включая jupyter-notebook.
+
+2. Сгенерируйте конфиг
+После установки снова выполните:
+
+text
+jupyter notebook --generate-config
+Файл конфигурации появится по пути:
+
+Windows: %USERPROFILE%\.jupyter\jupyter_notebook_config.py
+#########
+4. Откройте файл конфигурации
+Откройте файл C:\Users\user\.jupyter\jupyter_notebook_config.py в любом текстовом редакторе (например, Блокнот или VS Code).
+
+5. Найдите строку с параметром allow_hidden
+Используйте поиск по файлу (Ctrl+F) и найдите строку:
+
+python
+# c.ContentsManager.allow_hidden = False
+Уберите символ # в начале, чтобы раскомментировать строку.
+
+Замените False на True, чтобы разрешить показ скрытых файлов:
+python
+c.ContentsManager.allow_hidden = True
+
+Если в вашем файле jupyter_notebook_config.py отсутствует строка с параметром c.ContentsManager.allow_hidden, просто добавьте её вручную.
+
+Добавьте в любой части файла (лучше в конце) следующую строку:
+python
+c.ContentsManager.allow_hidden = True
+
+6. Сохраните изменения и закройте редактор
+
+7. Запустите JupyterLab из активированного виртуального окружения
+В той же командной строке введите:
+text
+jupyter lab
+
+8. В интерфейсе JupyterLab включите отображение скрытых файлов
+В меню выберите:
+View → Show Hidden Files (если такая опция доступна).
+
+Теперь в файловом браузере JupyterLab будут видны все скрытые файлы и папки, включая .git и .gitignore.
+
+###################################################
+Краткое резюме для конспекта
+Активировать виртуальное окружение.
+
+Убедиться в наличии JupyterLab, установить при необходимости.
+
+Сгенерировать конфиг: jupyter notebook --generate-config.
+
+Открыть файл %USERPROFILE%\.jupyter\jupyter_notebook_config.py.
+
+Изменить строку c.ContentsManager.allow_hidden = True.
+
+Сохранить и запустить jupyter lab.
+
+Включить показ скрытых файлов через меню View.

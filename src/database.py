@@ -9,9 +9,10 @@ def create_table():
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Employees (
             id TEXT PRIMARY KEY,
-            name TEXT,
+            employee TEXT,
             role TEXT,
             gender TEXT,
+            birthday TEXT,
             status TEXT
         )
     ''')
@@ -27,12 +28,12 @@ def fetch_employees():
     conn.close()
     return employees
 
-def insert_employee(id, name, role, gender, status):
+def insert_employee(id, employee, role, gender, birthday, status):
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     try:
-        cursor.execute('INSERT INTO Employees (id, name, role, gender, status) VALUES (?, ?, ?, ?, ?)',
-                      (id, name, role, gender, status))
+        cursor.execute('INSERT INTO Employees (id, employee, role, gender, birthday, status) VALUES (?, ?, ?, ?, ?, ?)',
+                      (id, employee, role, gender, birthday, status))
         conn.commit()
         print(f"Inserted employee {id} into database.")
     except sqlite3.IntegrityError as e:
@@ -49,11 +50,11 @@ def delete_employee(id):
     conn.close()
     print(f"Deleted employee {id} from database.")
 
-def update_employee(new_name, new_role, new_gender, new_status, id):
+def update_employee(new_employee, new_role, new_gender, new_birthday, new_status, id):
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
-    cursor.execute("UPDATE Employees SET name = ?, role = ?, gender = ?, status = ? WHERE id = ?",
-                  (new_name, new_role, new_gender, new_status, id))
+    cursor.execute("UPDATE Employees SET employee = ?, role = ?, gender = ?, birthday = ?, status = ? WHERE id = ?",
+                  (new_employee, new_role, new_gender, new_birthday, new_status, id))
     conn.commit()
     conn.close()
     print(f"Updated employee {id} in database.")

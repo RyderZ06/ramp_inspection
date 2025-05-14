@@ -29,7 +29,6 @@ def fetch_staff():
     conn.close()
     return staff
 
-# old name = insert_employee()
 def insert_staff(name, position, gender, birthday, status):
     conn = sq.connect(DB_PATH)
     cursor = conn.cursor()
@@ -49,7 +48,6 @@ def delete_staff(id):
     conn.close()
     print(f"Deleted staff member with id {id} from database.")
 
-# old name update_employee():
 def update_staff(id, name, position, gender, birthday, status):
     conn = sq.connect(DB_PATH)
     cursor = conn.cursor()

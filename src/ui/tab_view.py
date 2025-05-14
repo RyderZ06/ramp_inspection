@@ -93,13 +93,13 @@ class TabViewMain(BaseTabView):
     ):
         super().__init__(root, tab_name, text_to_display, buttons)
         self.add_tab("STAFF RECORDS", content_function=self.create_staff_frame)
-#        self.add_tab("AUDIT VIEWS", content_function=self.create_run_excel_viewer)
+        self.add_tab("RAMP RECORDS", content_function=self.create_ramp_frame)
 
     def create_staff_frame(self, tab_frame):
         create_staff_frame(tab_frame)  # Вызов функции
 
-#    def create_run_excel_viewer(self, tab_frame):
-#        run_excel_viewer(tab_frame)
+    def create_ramp_frame(self, tab_frame):
+        create_ramp_frame(tab_frame)
 
 class TabViewCore(BaseTabView):
     """Вкладка с базовыми настройками."""
